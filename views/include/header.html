@@ -5,6 +5,13 @@
     <title><%=title%></title>
     <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css"> <!--提交给服务器的 相对路径 -- 相对于静态文件根目录 -- server里将项目根目录下的node_modules作为静态文件根目录 -->
     <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css"> <!-- 给webstorm看的  所以是相对于本地文件的相对路径-->
+    <style>
+        .avatar{
+            width:25px;
+            height:25px;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
 <nav class="navbar navbar-inverse">
@@ -27,7 +34,10 @@
         <%
             if(user){%>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href=""><%=user.username%></a></li>
+                    <li><a href="">
+                        <img class="avatar" src="<%=user.avatar%>" alt="<%=user.avatar%>">
+                        <%=user.username%>
+                    </a></li>
                 </ul>
             <%}
         %>
@@ -35,3 +45,19 @@
     </div>
 </nav>
 <div class="container">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <%
+            if(success){%>
+            <div class="alert alert-success text-center">
+                <%=success%>
+            </div>
+            <%}%>
+            <%if(error){%>
+            <div class="alert alert-danger text-center">
+                <%=error%>
+            </div>
+            <%}
+            %>
+        </div>
+    </div>
